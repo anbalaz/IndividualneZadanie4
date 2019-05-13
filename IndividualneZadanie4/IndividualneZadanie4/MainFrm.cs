@@ -56,10 +56,16 @@ namespace IndividualneZadanie4
             dtGrdVwProject.Columns.Add("Name", "Name");
             dtGrdVwDepartments.Columns.Add("Code", "Code");
             dtGrdVwDepartments.Columns.Add("Name", "Name");
+
+            dtGrdVwEmployee.Columns.Add("LastName", "LastName");
+            dtGrdVwEmployee.Columns.Add("FirstName", "FirstName");
+            dtGrdVwEmployee.Columns.Add("Title", "Title");
+            dtGrdVwEmployee.Columns.Add("PhoneNumber", "PhoneNumber");
+            dtGrdVwEmployee.Columns.Add("EmailAddress", "EmailAddress");
             //dtGrdVwFirm.Columns["UserID"].Visible = false;
             cmbBxFirms.DisplayMember = nameof(Structure.Name);
         }
-
+        #region Refresh Datagrids
         private void RefreshDatagridFirm(List<Structure> structures)
         {
             dtGrdVwFirm.Rows.Clear();
@@ -96,6 +102,16 @@ namespace IndividualneZadanie4
             }
         }
 
+        private void RefreshDatagridEmployee(List<Employee> employees)
+        {
+            dtGrdVwEmployee.Rows.Clear();
+            foreach (var employee in employees)
+            {
+                dtGrdVwEmployee.Rows.Add(employee.LastName, employee.FirstName,employee.Title,employee.PhoneNumber,employee.EmailAddress);
+            }
+        }
+        #endregion
+
         private void dtGrdVwFirm_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int code=(int)dtGrdVwFirm.CurrentRow.Cells["Code"].Value;
@@ -112,6 +128,12 @@ namespace IndividualneZadanie4
         {
             int code = (int)dtGrdVwProject.CurrentRow.Cells["Code"].Value;
             RefreshDatagridDepartment(_mainFrmService.GetStructuresList(code, OrganizationLevel.Department));
+        }
+
+        private void dtGrdVwDepartments_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int code = (int)dtGrdVwDepartments.CurrentRow.Cells["Code"].Value;
+            RefreshDatagridEmployee(_mainFrmService.GetEmployeesList(code));
         }
     }
 }

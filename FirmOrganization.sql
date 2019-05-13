@@ -63,7 +63,7 @@ VALUES('Marincin','Marek','Ing.','094568477','smelinar@gmail.com',12),
 		('Bires','Juraj','Bc.','95604646','samozyrejme@gmail.com',13);
 
 SELECT * FROM Structure WHERE OrganizationLevel=2 AND StructureID=1;
-SELECT * FROM Structure WHERE OrganizationLevel=1 AND StructureID=null
-SELECT * FROM Employee WHERE StructureID =12
+SELECT * FROM Structure WHERE OrganizationLevel=1 AND StructureID=null;
+SELECT ID,LastName,FirstName,Title,PhoneNumber,EmailAddress,StructureID FROM Employee WHERE StructureID =12;
 
 

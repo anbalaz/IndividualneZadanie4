@@ -84,10 +84,13 @@
             this.dtGrdVwFirm.AllowUserToAddRows = false;
             this.dtGrdVwFirm.AllowUserToDeleteRows = false;
             this.dtGrdVwFirm.AllowUserToResizeRows = false;
+            this.dtGrdVwFirm.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGrdVwFirm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdVwFirm.Location = new System.Drawing.Point(16, 51);
+            this.dtGrdVwFirm.MultiSelect = false;
             this.dtGrdVwFirm.Name = "dtGrdVwFirm";
             this.dtGrdVwFirm.ReadOnly = true;
+            this.dtGrdVwFirm.RowHeadersVisible = false;
             this.dtGrdVwFirm.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGrdVwFirm.Size = new System.Drawing.Size(257, 510);
             this.dtGrdVwFirm.TabIndex = 6;
@@ -171,34 +174,45 @@
             // 
             this.dtGrdVwDivision.AllowUserToAddRows = false;
             this.dtGrdVwDivision.AllowUserToDeleteRows = false;
+            this.dtGrdVwDivision.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGrdVwDivision.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdVwDivision.Location = new System.Drawing.Point(288, 51);
+            this.dtGrdVwDivision.MultiSelect = false;
             this.dtGrdVwDivision.Name = "dtGrdVwDivision";
             this.dtGrdVwDivision.ReadOnly = true;
+            this.dtGrdVwDivision.RowHeadersVisible = false;
             this.dtGrdVwDivision.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGrdVwDivision.Size = new System.Drawing.Size(257, 510);
             this.dtGrdVwDivision.TabIndex = 17;
+            this.dtGrdVwDivision.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrdVwDivision_CellContentClick);
             // 
             // dtGrdVwProject
             // 
             this.dtGrdVwProject.AllowUserToAddRows = false;
             this.dtGrdVwProject.AllowUserToDeleteRows = false;
+            this.dtGrdVwProject.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGrdVwProject.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdVwProject.Location = new System.Drawing.Point(561, 51);
+            this.dtGrdVwProject.MultiSelect = false;
             this.dtGrdVwProject.Name = "dtGrdVwProject";
             this.dtGrdVwProject.ReadOnly = true;
+            this.dtGrdVwProject.RowHeadersVisible = false;
             this.dtGrdVwProject.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGrdVwProject.Size = new System.Drawing.Size(257, 510);
             this.dtGrdVwProject.TabIndex = 18;
+            this.dtGrdVwProject.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrdVwProject_CellContentClick);
             // 
             // dtGrdVwDepartments
             // 
             this.dtGrdVwDepartments.AllowUserToAddRows = false;
             this.dtGrdVwDepartments.AllowUserToDeleteRows = false;
+            this.dtGrdVwDepartments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGrdVwDepartments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdVwDepartments.Location = new System.Drawing.Point(836, 51);
+            this.dtGrdVwDepartments.MultiSelect = false;
             this.dtGrdVwDepartments.Name = "dtGrdVwDepartments";
             this.dtGrdVwDepartments.ReadOnly = true;
+            this.dtGrdVwDepartments.RowHeadersVisible = false;
             this.dtGrdVwDepartments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGrdVwDepartments.Size = new System.Drawing.Size(257, 510);
             this.dtGrdVwDepartments.TabIndex = 19;
@@ -207,10 +221,13 @@
             // 
             this.dtGrdVwEmployee.AllowUserToAddRows = false;
             this.dtGrdVwEmployee.AllowUserToDeleteRows = false;
+            this.dtGrdVwEmployee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGrdVwEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdVwEmployee.Location = new System.Drawing.Point(1115, 51);
+            this.dtGrdVwEmployee.MultiSelect = false;
             this.dtGrdVwEmployee.Name = "dtGrdVwEmployee";
             this.dtGrdVwEmployee.ReadOnly = true;
+            this.dtGrdVwEmployee.RowHeadersVisible = false;
             this.dtGrdVwEmployee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGrdVwEmployee.Size = new System.Drawing.Size(257, 510);
             this.dtGrdVwEmployee.TabIndex = 20;

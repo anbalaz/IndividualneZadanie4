@@ -44,12 +44,12 @@ VALUES('ZVLDivision',4,2,1),
 	('ZVLProjekt',5,3,2),
 	('ZVLDepartment',6,4,3),
 	('ZVLProjekt',7,2,2),
-	('ZVLProjekt',8,2,2);
+	('ZVLProjekt',8,2,2),
+	('ZVLDivision',9,3,7),
+	('ZVLProjekt',10,3,7),
+	('ZVLDepartment',11,3,8),
+	('ZVLDepartment',12,4,9),
+	('ZVLDepartment',13,4,10);
 
 SELECT * FROM Structure WHERE OrganizationLevel=2 AND StructureID=1;
 SELECT * FROM Structure WHERE OrganizationLevel=1 AND StructureID=null
-
-INSERT INTO Structure (Name,Code,OrganizationLevel,StructureID) 
-VALUES('ZVLDivision',9,3,7),
-	('ZVLProjekt',10,3,7),
-	('ZVLDepartment',11,3,8);

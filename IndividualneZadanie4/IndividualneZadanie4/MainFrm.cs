@@ -18,7 +18,7 @@ namespace IndividualneZadanie4
         public MainFrm()
         {
             InitializeComponent();
-            InitializeCmbBx();
+            InitializeDataGrids();
             RefreshDatagridFirm(_mainFrmService.GetStructuresList(0, OrganizationLevel.Firm));
         }
 
@@ -46,11 +46,16 @@ namespace IndividualneZadanie4
             }
         }
 
-        private void InitializeCmbBx()
+        private void InitializeDataGrids()
         {
-            
             dtGrdVwFirm.Columns.Add("Code", "Code");
             dtGrdVwFirm.Columns.Add("Name", "Name");
+            dtGrdVwDivision.Columns.Add("Code", "Code");
+            dtGrdVwDivision.Columns.Add("Name", "Name");
+            dtGrdVwProject.Columns.Add("Code", "Code");
+            dtGrdVwProject.Columns.Add("Name", "Name");
+            dtGrdVwDepartments.Columns.Add("Code", "Code");
+            dtGrdVwDepartments.Columns.Add("Name", "Name");
             //dtGrdVwFirm.Columns["UserID"].Visible = false;
             cmbBxFirms.DisplayMember = nameof(Structure.Name);
         }
@@ -69,14 +74,44 @@ namespace IndividualneZadanie4
             dtGrdVwDivision.Rows.Clear();
             foreach (var structure in structures)
             {
-                dtGrdVwFirm.Rows.Add(structure.Code, structure.Name);
+                dtGrdVwDivision.Rows.Add(structure.Code, structure.Name);
+            }
+        }
+
+        private void RefreshDatagridProject(List<Structure> structures)
+        {
+            dtGrdVwProject.Rows.Clear();
+            foreach (var structure in structures)
+            {
+                dtGrdVwProject.Rows.Add(structure.Code, structure.Name);
+            }
+        }
+
+        private void RefreshDatagridDepartment(List<Structure> structures)
+        {
+            dtGrdVwDepartments.Rows.Clear();
+            foreach (var structure in structures)
+            {
+                dtGrdVwDepartments.Rows.Add(structure.Code, structure.Name);
             }
         }
 
         private void dtGrdVwFirm_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int code=(int)dtGrdVwFirm.CurrentRow.Cells["Code"].Value;
-            RefreshDatagridFirm(_mainFrmService.GetStructuresList(code, OrganizationLevel.Division));
+            RefreshDatagridDivision(_mainFrmService.GetStructuresList(code, OrganizationLevel.Division));
+        }
+
+        private void dtGrdVwDivision_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int code = (int)dtGrdVwDivision.CurrentRow.Cells["Code"].Value;
+            RefreshDatagridProject(_mainFrmService.GetStructuresList(code, OrganizationLevel.Project));
+        }
+
+        private void dtGrdVwProject_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int code = (int)dtGrdVwProject.CurrentRow.Cells["Code"].Value;
+            RefreshDatagridDepartment(_mainFrmService.GetStructuresList(code, OrganizationLevel.Department));
         }
     }
 }

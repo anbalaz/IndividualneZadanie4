@@ -71,6 +71,7 @@
             this.cmbBxFirms.Name = "cmbBxFirms";
             this.cmbBxFirms.Size = new System.Drawing.Size(121, 21);
             this.cmbBxFirms.TabIndex = 3;
+            this.cmbBxFirms.SelectedValueChanged += new System.EventHandler(this.cmbBxFirms_SelectedValueChanged);
             // 
             // label1
             // 

@@ -19,6 +19,7 @@ namespace IndividualneZadanie4
         {
             InitializeComponent();
             InitializeCmbBx();
+            RefreshDatagridFirm(_mainFrmService.GetStructuresList(0, OrganizationLevel.Firm));
         }
 
         private void bttnManageStructures_Click(object sender, EventArgs e)
@@ -47,32 +48,35 @@ namespace IndividualneZadanie4
 
         private void InitializeCmbBx()
         {
-            cmbBxFirms.DataSource = new BindingSource(_mainFrmService.GetStructuresList(0,OrganizationLevel.Firm), null);
+            
+            dtGrdVwFirm.Columns.Add("Code", "Code");
+            dtGrdVwFirm.Columns.Add("Name", "Name");
+            //dtGrdVwFirm.Columns["UserID"].Visible = false;
             cmbBxFirms.DisplayMember = nameof(Structure.Name);
         }
 
-        private void cmbBxFirms_SelectedValueChanged(object sender, EventArgs e)
+        private void RefreshDatagridFirm(List<Structure> structures)
         {
-            trVwFirmStructure.Nodes.Clear();
-            Structure structure = (Structure)cmbBxFirms.SelectedValue;
-            trVwFirmStructure.Nodes.Add(structure.Name);
-
-            List <Structure> structures=_mainFrmService.GetStructuresList(structure.ID, OrganizationLevel.Division);
-            foreach (var part in structures)
+            dtGrdVwFirm.Rows.Clear();
+            foreach (var structure in structures)
             {
-                trVwFirmStructure.Nodes[0].Nodes.Add(part.Name);
-            }
-
-            List<Structure> structures1 = _mainFrmService.GetStructuresList(structure.ID, OrganizationLevel.Division);
-            foreach (var part in structures1)
-            {
-                trVwFirmStructure.Nodes.Add(part.Name,);
+                dtGrdVwFirm.Rows.Add(structure.Code,structure.Name );
             }
         }
-        private void mothod(int code, OrganizationLevel organization)
+
+        private void RefreshDatagridDivision(List<Structure> structures)
         {
-            List<Structure> castiFirmy;
-            castiFirmy= _mainFrmService.GetStructuresList(code, organization);
+            dtGrdVwDivision.Rows.Clear();
+            foreach (var structure in structures)
+            {
+                dtGrdVwFirm.Rows.Add(structure.Code, structure.Name);
+            }
+        }
+
+        private void dtGrdVwFirm_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int code=(int)dtGrdVwFirm.CurrentRow.Cells["Code"].Value;
+            RefreshDatagridFirm(_mainFrmService.GetStructuresList(code, OrganizationLevel.Division));
         }
     }
 }

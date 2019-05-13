@@ -37,9 +37,19 @@ REFERENCES [Structure](ID);
 INSERT INTO Structure (Name,Code,OrganizationLevel) 
 VALUES('ZVL',1,1),
 	('Farmet',2,1),
-	('Lambert',3,1)
+	('Lambert',3,1);
 
 INSERT INTO Structure (Name,Code,OrganizationLevel,StructureID) 
 VALUES('ZVLDivision',4,2,1),
 	('ZVLProjekt',5,3,2),
-	('ZVLDepartment',6,4,3)
+	('ZVLDepartment',6,4,3),
+	('ZVLProjekt',7,2,2),
+	('ZVLProjekt',8,2,2);
+
+SELECT * FROM Structure WHERE OrganizationLevel=2 AND StructureID=1;
+SELECT * FROM Structure WHERE OrganizationLevel=1 AND StructureID=null
+
+INSERT INTO Structure (Name,Code,OrganizationLevel,StructureID) 
+VALUES('ZVLDivision',9,3,7),
+	('ZVLProjekt',10,3,7),
+	('ZVLDepartment',11,3,8);

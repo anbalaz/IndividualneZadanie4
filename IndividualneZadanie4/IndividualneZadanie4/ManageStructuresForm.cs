@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace IndividualneZadanie4
 {
-    public partial class Form1 : Form
+    public partial class ManageStructuresForm : Form
     {
-        public Form1()
+        public ManageStructuresForm()
         {
             InitializeComponent();
         }

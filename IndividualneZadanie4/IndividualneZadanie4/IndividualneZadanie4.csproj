@@ -46,14 +46,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="MainFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MainFrm.Designer.cs">
+      <DependentUpon>MainFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageEmployeesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageEmployeesForm.Designer.cs">
+      <DependentUpon>ManageEmployeesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageStructuresForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageStructuresForm.Designer.cs">
+      <DependentUpon>ManageStructuresForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewFirmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewFirmForm.Designer.cs">
+      <DependentUpon>NewFirmForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MainFrm.resx">
+      <DependentUpon>MainFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,6 +96,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{9ce662cf-06d7-4ee3-8d17-7d7d7fd7845b}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Service\Service.csproj">
+      <Project>{04ea3521-3164-486a-87a3-9a15dd277e5a}</Project>
+      <Name>Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

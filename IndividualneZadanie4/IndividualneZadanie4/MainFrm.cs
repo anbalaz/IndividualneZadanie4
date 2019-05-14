@@ -2,12 +2,6 @@
 using Service;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace IndividualneZadanie4
@@ -71,7 +65,7 @@ namespace IndividualneZadanie4
             dtGrdVwFirm.Rows.Clear();
             foreach (var structure in structures)
             {
-                dtGrdVwFirm.Rows.Add(structure.Code,structure.Name );
+                dtGrdVwFirm.Rows.Add(structure.Code, structure.Name);
             }
         }
 
@@ -107,14 +101,14 @@ namespace IndividualneZadanie4
             dtGrdVwEmployee.Rows.Clear();
             foreach (var employee in employees)
             {
-                dtGrdVwEmployee.Rows.Add(employee.LastName, employee.FirstName,employee.Title,employee.PhoneNumber,employee.EmailAddress);
+                dtGrdVwEmployee.Rows.Add(employee.LastName, employee.FirstName, employee.Title, employee.PhoneNumber, employee.EmailAddress);
             }
         }
         #endregion
 
         private void dtGrdVwFirm_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int code=(int)dtGrdVwFirm.CurrentRow.Cells["Code"].Value;
+            int code = (int)dtGrdVwFirm.CurrentRow.Cells["Code"].Value;
             RefreshDatagridDivision(_mainFrmService.GetStructuresList(code, OrganizationLevel.Division));
         }
 

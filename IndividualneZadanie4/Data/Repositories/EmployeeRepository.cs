@@ -1,12 +1,8 @@
 ﻿using Data.Models;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
@@ -43,7 +39,7 @@ namespace Data.Repositories
                                     employee.Title = reader.IsDBNull(3) ? null : reader.GetString(3);
                                     employee.PhoneNumber = reader.IsDBNull(4) ? null : reader.GetString(4);
                                     employee.EmailAddress = reader.IsDBNull(5) ? null : reader.GetString(5);
-                                    employee.FirmStructure = new Structure() {ID= reader.GetInt32(6) };
+                                    employee.FirmStructure = new Structure() { ID = reader.GetInt32(6) };
                                     employees.Add(employee);
                                 }
                             }
@@ -89,7 +85,7 @@ namespace Data.Repositories
                                     employee.Title = reader.IsDBNull(3) ? null : reader.GetString(3);
                                     employee.PhoneNumber = reader.IsDBNull(4) ? null : reader.GetString(4);
                                     employee.EmailAddress = reader.IsDBNull(5) ? null : reader.GetString(5);
-                                    employee.FirmStructure = new Structure() { ID = reader.GetInt32(6) };
+                                    employee.FirmStructure = reader.IsDBNull(6) ? null : new Structure() { ID = reader.GetInt32(6) };
                                     employees.Add(employee);
                                 }
                             }
@@ -110,7 +106,7 @@ namespace Data.Repositories
             using (SqlConnection connection = new SqlConnection(Route.CONNECTION_STRING))
             {
                 try
-                {   
+                {
                     connection.Open();
                 }
                 catch (SqlException e)
@@ -137,7 +133,7 @@ namespace Data.Repositories
                                     employee.Title = reader.IsDBNull(3) ? null : reader.GetString(3);
                                     employee.PhoneNumber = reader.IsDBNull(4) ? null : reader.GetString(4);
                                     employee.EmailAddress = reader.IsDBNull(5) ? null : reader.GetString(5);
-                                    employee.FirmStructure = new Structure() { ID = reader.GetInt32(6) };
+                                    employee.FirmStructure = reader.IsDBNull(6) ? null : new Structure() { ID = reader.GetInt32(6) };
                                 }
                             }
                         }

@@ -6,8 +6,8 @@ namespace Service
 {
     public class MainFrmService
     {
-        private StructureRepository _structureRepository = new StructureRepository();
-        private EmployeeRepository _employeeRepository = new EmployeeRepository();
+        private StructureRepository _structureRepository = MainRepository.StructureRepository;
+        private EmployeeRepository _employeeRepository = MainRepository.EmployeeRepository;
 
         public List<Structure> GetStructuresList(int code, OrganizationLevel level)
         {
@@ -39,9 +39,9 @@ namespace Service
             return _structureRepository.SelectStructureList();
         }
 
-        public bool UpdateStructure(Structure structure)
+        public bool UpdateStructure(Structure structure, int previousDirectorId)
         {
-            return _structureRepository.UpdateStructure(structure);
+            return _structureRepository.UpdateStructure(structure, previousDirectorId);
         }
 
         public List<Employee> GetEveryEmployeeWhoIsNotDirector(int code)

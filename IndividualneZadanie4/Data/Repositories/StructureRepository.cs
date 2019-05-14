@@ -151,9 +151,10 @@ namespace Data.Repositories
             }
         }
 
-        public bool UpdateStructure(Structure structure)
+        public bool UpdateStructure(Structure structure,int previousDirectorId)
         {
-            string sqlQueryUpdateDirector = @"UPDATE Employee SET StructureID = @structureID WHERE ID = @employeeId";
+            string sqlQueryUpdateNewDirector = @"UPDATE Employee SET StructureID = @structureID WHERE ID = @employeeId";
+            string sqlQueryUpdatePastDirector = @"UPDATE Employee SET StructureID = null WHERE ID = @previousDirectorId";
             string sqlQueryUpdateStructure = @"UPDATE Structure SET Name = @name, EmployeeID = @employeeID WHERE ID = @structureID";
 
             using (SqlConnection connection = new SqlConnection(Route.CONNECTION_STRING))
@@ -168,9 +169,15 @@ namespace Data.Repositories
                     command.Parameters.Add("@name", SqlDbType.NVarChar).Value = structure.Name;
                     command.Parameters.Add("@employeeID", SqlDbType.Int).Value = structure.Employee.ID != 0 ? (object)structure.Employee.ID : DBNull.Value;
                     command.Parameters.Add("@structureID", SqlDbType.Int).Value = structure.ID;
+                    command.Parameters.Add("@previousDirectorId", SqlDbType.Int).Value = previousDirectorId;
                     try
                     {
-                        command.CommandText = sqlQueryUpdateDirector;
+                        if (previousDirectorId != 0)
+                        {
+                            command.CommandText = sqlQueryUpdatePastDirector;
+                            command.ExecuteNonQuery();
+                        }
+                        command.CommandText = sqlQueryUpdateNewDirector;
                         command.ExecuteNonQuery();
                         command.CommandText = sqlQueryUpdateStructure;
                         command.ExecuteNonQuery();

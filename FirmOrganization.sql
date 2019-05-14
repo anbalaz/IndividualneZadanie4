@@ -23,7 +23,7 @@ CREATE TABLE [Structure]
 	[Title] [nvarchar](30) NULL,
 	[PhoneNumber] [nvarchar](24) NULL,
 	[EmailAddress] [nvarchar](100) NULL,
-	[StructureID] [int] FOREIGN KEY REFERENCES [Structure] (ID) NOT NULL,
+	[StructureID] [int] FOREIGN KEY REFERENCES [Structure] (ID),
  );
 
 

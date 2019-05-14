@@ -75,11 +75,13 @@ namespace IndividualneZadanie4
             string message = "Data were not updated";
             if (!string.IsNullOrWhiteSpace(txtBxStructureName.Text) && !string.IsNullOrEmpty(txtBxStructureName.Text))
             {
-                if (_mainFrmService.UpdateStructure(_structure) == true)
+                if (_mainFrmService.UpdateStructure(_structure,_previousDirectorId) == true)
                 {
                     message = "Data were updated";
                 }
             }
+            RefreshStructure();
+            RefreshDirectorAndStructureBoxes();
             MessageBox.Show(message);
         }
     }

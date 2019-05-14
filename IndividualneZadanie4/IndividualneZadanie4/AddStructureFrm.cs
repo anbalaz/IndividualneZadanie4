@@ -8,11 +8,11 @@ using System.Windows.Forms;
 
 namespace IndividualneZadanie4
 {
-    public partial class NewFirmForm : Form
+    public partial class AddStructureFrm : Form
     {
         private MainFrmService _mainFrmService = new MainFrmService();
 
-        public NewFirmForm()
+        public AddStructureFrm()
         {
             InitializeComponent();
             InitializeFields();

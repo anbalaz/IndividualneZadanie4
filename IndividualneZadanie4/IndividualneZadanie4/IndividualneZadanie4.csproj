@@ -64,22 +64,25 @@
     <Compile Include="ManageStructuresForm.Designer.cs">
       <DependentUpon>ManageStructuresForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewFirmForm.cs">
+    <Compile Include="AddStructureFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewFirmForm.Designer.cs">
-      <DependentUpon>NewFirmForm.cs</DependentUpon>
+    <Compile Include="AddStructureFrm.Designer.cs">
+      <DependentUpon>AddStructureFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainFrm.resx">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ManageEmployeesForm.resx">
+      <DependentUpon>ManageEmployeesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManageStructuresForm.resx">
       <DependentUpon>ManageStructuresForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewFirmForm.resx">
-      <DependentUpon>NewFirmForm.cs</DependentUpon>
+    <EmbeddedResource Include="AddStructureFrm.resx">
+      <DependentUpon>AddStructureFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

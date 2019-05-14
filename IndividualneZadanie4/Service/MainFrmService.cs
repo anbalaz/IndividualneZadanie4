@@ -40,6 +40,11 @@ namespace Service
             return _structureRepository.SelectStructureList();
         }
 
+        public List<Structure> GetStructuresList(OrganizationLevel level) 
+        {
+            return _structureRepository.SelectStructureList().Where(structure=>structure.Level== level).ToList();
+        }
+
         public bool UpdateStructure(Structure structure, int previousDirectorId)
         {
             return _structureRepository.UpdateStructure(structure, previousDirectorId);
@@ -48,6 +53,11 @@ namespace Service
         public bool InsertStructure(Structure structure)
         {
             return _structureRepository.InsertStructure(structure);
+        }
+
+        public bool InsertEmployee(Employee employee)
+        {
+            return _employeeRepository.InsertEmployee(employee);
         }
 
         public List<Employee> GetEveryEmployeeWhoIsNotDirector(int code)

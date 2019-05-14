@@ -1,4 +1,5 @@
 ﻿using Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -144,6 +145,36 @@ namespace Data.Repositories
                     }
                 }
                 return employee;
+            }
+        }
+
+        public bool InsertEmployee(Employee employee)
+        {
+            using (SqlConnection connection = new SqlConnection(Route.CONNECTION_STRING))
+            {
+
+                connection.Open();
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    try
+                    {
+                        command.CommandText = @"INSERT INTO Employee(FirstName,LastName,Title,PhoneNumber,EmailAddress,StructureID) 
+                                               VALUES(@firstName, @lastName, @title, @phoneNumber, @emailAddress,@firmStructure)";
+
+                        command.Parameters.Add("@firstName", SqlDbType.NVarChar).Value = employee.FirstName;
+                        command.Parameters.Add("@lastName", SqlDbType.NVarChar).Value = employee.LastName;
+                        command.Parameters.Add("@title", SqlDbType.NVarChar).Value = (object)employee.Title ?? DBNull.Value;
+                        command.Parameters.Add("@phoneNumber", SqlDbType.NVarChar).Value = (object)employee.PhoneNumber ?? DBNull.Value;
+                        command.Parameters.Add("@emailAddress", SqlDbType.NVarChar).Value = (object)employee.EmailAddress ?? DBNull.Value;
+                        command.Parameters.Add("@firmStructure", SqlDbType.Int).Value = employee.FirmStructure != null ? (object)employee.FirmStructure.ID : DBNull.Value; ;
+                        return command.ExecuteNonQuery() > 0;
+                    }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine($"Exception occured: \n {ex}");
+                        return false;
+                    }
+                }
             }
         }
     }

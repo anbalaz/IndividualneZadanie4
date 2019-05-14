@@ -42,6 +42,7 @@
             this.dtGrdVwProject = new System.Windows.Forms.DataGridView();
             this.dtGrdVwDepartments = new System.Windows.Forms.DataGridView();
             this.dtGrdVwEmployee = new System.Windows.Forms.DataGridView();
+            this.bttnAddEmployees = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwFirm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwDivision)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwProject)).BeginInit();
@@ -55,7 +56,7 @@
             this.bttnNewFirm.Name = "bttnNewFirm";
             this.bttnNewFirm.Size = new System.Drawing.Size(121, 23);
             this.bttnNewFirm.TabIndex = 2;
-            this.bttnNewFirm.Text = "New firm";
+            this.bttnNewFirm.Text = "Add Structures";
             this.bttnNewFirm.UseVisualStyleBackColor = true;
             this.bttnNewFirm.Click += new System.EventHandler(this.bttnNewFirm_Click);
             // 
@@ -124,7 +125,7 @@
             // 
             // bttnManageStructures
             // 
-            this.bttnManageStructures.Location = new System.Drawing.Point(152, 567);
+            this.bttnManageStructures.Location = new System.Drawing.Point(257, 567);
             this.bttnManageStructures.Name = "bttnManageStructures";
             this.bttnManageStructures.Size = new System.Drawing.Size(121, 23);
             this.bttnManageStructures.TabIndex = 1;
@@ -134,7 +135,7 @@
             // 
             // bttnManageEmployees
             // 
-            this.bttnManageEmployees.Location = new System.Drawing.Point(1115, 567);
+            this.bttnManageEmployees.Location = new System.Drawing.Point(504, 567);
             this.bttnManageEmployees.Name = "bttnManageEmployees";
             this.bttnManageEmployees.Size = new System.Drawing.Size(121, 23);
             this.bttnManageEmployees.TabIndex = 5;
@@ -144,12 +145,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(288, 567);
+            this.button1.Location = new System.Drawing.Point(999, 567);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 23);
             this.button1.TabIndex = 16;
             this.button1.Text = "Delete Structure";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             // 
             // dtGrdVwDivision
             // 
@@ -217,11 +219,22 @@
             this.dtGrdVwEmployee.Size = new System.Drawing.Size(376, 510);
             this.dtGrdVwEmployee.TabIndex = 20;
             // 
+            // bttnAddEmployees
+            // 
+            this.bttnAddEmployees.Location = new System.Drawing.Point(750, 567);
+            this.bttnAddEmployees.Name = "bttnAddEmployees";
+            this.bttnAddEmployees.Size = new System.Drawing.Size(121, 23);
+            this.bttnAddEmployees.TabIndex = 21;
+            this.bttnAddEmployees.Text = "Add Employees";
+            this.bttnAddEmployees.UseVisualStyleBackColor = true;
+            this.bttnAddEmployees.Click += new System.EventHandler(this.bttnAddEmployees_Click);
+            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1401, 640);
+            this.Controls.Add(this.bttnAddEmployees);
             this.Controls.Add(this.dtGrdVwEmployee);
             this.Controls.Add(this.dtGrdVwDepartments);
             this.Controls.Add(this.dtGrdVwProject);
@@ -263,6 +276,7 @@
         private System.Windows.Forms.DataGridView dtGrdVwProject;
         private System.Windows.Forms.DataGridView dtGrdVwDepartments;
         private System.Windows.Forms.DataGridView dtGrdVwEmployee;
+        private System.Windows.Forms.Button bttnAddEmployees;
     }
 }
 

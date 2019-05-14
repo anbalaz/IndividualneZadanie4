@@ -36,7 +36,15 @@ namespace IndividualneZadanie4
 
         private void bttnNewFirm_Click(object sender, EventArgs e)
         {
-            using (NewFirmForm newFrm = new NewFirmForm())
+            using (AddStructureFrm newFrm = new AddStructureFrm())
+            {
+                newFrm.ShowDialog();
+            }
+        }
+
+        private void bttnAddEmployees_Click(object sender, EventArgs e)
+        {
+            using (ManageEmployeesForm newFrm = new ManageEmployeesForm(0))
             {
                 newFrm.ShowDialog();
             }
@@ -129,5 +137,7 @@ namespace IndividualneZadanie4
             int code = (int)dtGrdVwDepartments.CurrentRow.Cells["Code"].Value;
             RefreshDatagridEmployee(_mainFrmService.GetEmployeesList(code));
         }
+
+
     }
 }

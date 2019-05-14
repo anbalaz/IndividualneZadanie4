@@ -1,6 +1,6 @@
 ﻿namespace IndividualneZadanie4
 {
-    partial class NewFirmForm
+    partial class AddStructureFrm
     {
         /// <summary>
         /// Required designer variable.

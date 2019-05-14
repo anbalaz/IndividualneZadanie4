@@ -70,20 +70,3 @@ VALUES('Marincin','Marek','Ing.','094568477','smelinar@gmail.com',1),
 		('Horvathova','Martina','Bc.','8794646','samozyrejme@gmail.com',12),
 		('Rozumna','Simona','Bc.','3213154','samozyrejme@gmail.com',12),
 		('Lasova','Maria','Bc.','556464546','samozyrejme@gmail.com',12);
-
-
-
-SELECT * FROM Structure WHERE OrganizationLevel=2 AND StructureID=1;
-SELECT * FROM Structure WHERE OrganizationLevel=1 AND StructureID=null;
-SELECT ID,LastName,FirstName,Title,PhoneNumber,EmailAddress,StructureID FROM Employee WHERE StructureID =12;
-
-SELECT s.EmployeeID,LastName,FirstName,Title,PhoneNumber,EmailAddress,e.StructureID FROM Employee AS e
-LEFT JOIN Structure AS s ON s.EmployeeID=e.ID
-WHERE s.EmployeeID=2; 
-
-SELECT ID,LastName,FirstName,Title,PhoneNumber,EmailAddress,StructureID FROM Employee
-
-UPDATE Employee SET StructureID = null WHERE ID = 1
-
-Select * FROM Employee
-

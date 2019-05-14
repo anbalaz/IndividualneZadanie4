@@ -166,9 +166,47 @@ namespace Data.Repositories
                         command.Parameters.Add("@title", SqlDbType.NVarChar).Value = (object)employee.Title ?? DBNull.Value;
                         command.Parameters.Add("@phoneNumber", SqlDbType.NVarChar).Value = (object)employee.PhoneNumber ?? DBNull.Value;
                         command.Parameters.Add("@emailAddress", SqlDbType.NVarChar).Value = (object)employee.EmailAddress ?? DBNull.Value;
-                        command.Parameters.Add("@firmStructure", SqlDbType.Int).Value = employee.FirmStructure != null ? (object)employee.FirmStructure.ID : DBNull.Value; ;
+                        command.Parameters.Add("@firmStructure", SqlDbType.Int).Value = employee.FirmStructure != null ? (object)employee.FirmStructure.ID : DBNull.Value;
                         return command.ExecuteNonQuery() > 0;
                     }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine($"Exception occured: \n {ex}");
+                        return false;
+                    }
+                }
+            }
+        }
+
+        public bool UpdateEmployee(Employee employee)
+        {
+            using (SqlConnection connection = new SqlConnection(Route.CONNECTION_STRING))
+            {
+                connection.Open();
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    try
+                    {
+                        command.CommandText = @"UPDATE Employee
+                                               SET FirstName= @firstName,
+                                                   LastName= @lastName,
+                                                   Title =@title,
+                                                   PhoneNumber= @phoneNumber,
+                                                   EmailAddress= @emailAddress,
+                                                   StructureID= @structureID
+                                                   WHERE ID=@id";
+
+                        command.Parameters.Add("@firstName", SqlDbType.NVarChar).Value = employee.FirstName;
+                        command.Parameters.Add("@lastName", SqlDbType.NVarChar).Value = employee.LastName;
+                        command.Parameters.Add("@title", SqlDbType.NVarChar).Value = (object)employee.Title ?? DBNull.Value;
+                        command.Parameters.Add("@phoneNumber", SqlDbType.NVarChar).Value = (object)employee.PhoneNumber ?? DBNull.Value;
+                        command.Parameters.Add("@emailAddress", SqlDbType.NVarChar).Value = (object)employee.EmailAddress ?? DBNull.Value;
+                        command.Parameters.Add("@structureID", SqlDbType.Int).Value = employee.FirmStructure != null ? (object)employee.FirmStructure.ID : DBNull.Value;
+                        command.Parameters.Add("@id", SqlDbType.Int).Value = employee.ID;
+
+                        return command.ExecuteNonQuery() > 0;
+                    }
+
                     catch (SqlException ex)
                     {
                         Console.WriteLine($"Exception occured: \n {ex}");

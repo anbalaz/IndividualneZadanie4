@@ -125,7 +125,7 @@
             // 
             // bttnManageStructures
             // 
-            this.bttnManageStructures.Location = new System.Drawing.Point(257, 567);
+            this.bttnManageStructures.Location = new System.Drawing.Point(16, 605);
             this.bttnManageStructures.Name = "bttnManageStructures";
             this.bttnManageStructures.Size = new System.Drawing.Size(121, 23);
             this.bttnManageStructures.TabIndex = 1;
@@ -135,7 +135,7 @@
             // 
             // bttnManageEmployees
             // 
-            this.bttnManageEmployees.Location = new System.Drawing.Point(504, 567);
+            this.bttnManageEmployees.Location = new System.Drawing.Point(257, 605);
             this.bttnManageEmployees.Name = "bttnManageEmployees";
             this.bttnManageEmployees.Size = new System.Drawing.Size(121, 23);
             this.bttnManageEmployees.TabIndex = 5;
@@ -158,6 +158,7 @@
             this.dtGrdVwDivision.AllowUserToAddRows = false;
             this.dtGrdVwDivision.AllowUserToDeleteRows = false;
             this.dtGrdVwDivision.AllowUserToResizeColumns = false;
+            this.dtGrdVwDivision.AllowUserToResizeRows = false;
             this.dtGrdVwDivision.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGrdVwDivision.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdVwDivision.Location = new System.Drawing.Point(257, 51);
@@ -175,6 +176,7 @@
             this.dtGrdVwProject.AllowUserToAddRows = false;
             this.dtGrdVwProject.AllowUserToDeleteRows = false;
             this.dtGrdVwProject.AllowUserToResizeColumns = false;
+            this.dtGrdVwProject.AllowUserToResizeRows = false;
             this.dtGrdVwProject.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGrdVwProject.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdVwProject.Location = new System.Drawing.Point(504, 51);
@@ -192,6 +194,7 @@
             this.dtGrdVwDepartments.AllowUserToAddRows = false;
             this.dtGrdVwDepartments.AllowUserToDeleteRows = false;
             this.dtGrdVwDepartments.AllowUserToResizeColumns = false;
+            this.dtGrdVwDepartments.AllowUserToResizeRows = false;
             this.dtGrdVwDepartments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGrdVwDepartments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdVwDepartments.Location = new System.Drawing.Point(750, 51);
@@ -208,6 +211,7 @@
             // 
             this.dtGrdVwEmployee.AllowUserToAddRows = false;
             this.dtGrdVwEmployee.AllowUserToDeleteRows = false;
+            this.dtGrdVwEmployee.AllowUserToResizeRows = false;
             this.dtGrdVwEmployee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGrdVwEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdVwEmployee.Location = new System.Drawing.Point(996, 51);
@@ -221,7 +225,7 @@
             // 
             // bttnAddEmployees
             // 
-            this.bttnAddEmployees.Location = new System.Drawing.Point(750, 567);
+            this.bttnAddEmployees.Location = new System.Drawing.Point(257, 567);
             this.bttnAddEmployees.Name = "bttnAddEmployees";
             this.bttnAddEmployees.Size = new System.Drawing.Size(121, 23);
             this.bttnAddEmployees.TabIndex = 21;

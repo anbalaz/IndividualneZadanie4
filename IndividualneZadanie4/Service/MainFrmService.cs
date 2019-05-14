@@ -40,9 +40,9 @@ namespace Service
             return _structureRepository.SelectStructureList();
         }
 
-        public List<Structure> GetStructuresList(OrganizationLevel level) 
+        public List<Structure> GetStructuresList(OrganizationLevel level)
         {
-            return _structureRepository.SelectStructureList().Where(structure=>structure.Level== level).ToList();
+            return _structureRepository.SelectStructureList().Where(structure => structure.Level == level).ToList();
         }
 
         public bool UpdateStructure(Structure structure, int previousDirectorId)
@@ -58,6 +58,11 @@ namespace Service
         public bool InsertEmployee(Employee employee)
         {
             return _employeeRepository.InsertEmployee(employee);
+        }
+
+        public bool UpdateEmployee(Employee employee)
+        {
+            return _employeeRepository.UpdateEmployee(employee);
         }
 
         public List<Employee> GetEveryEmployeeWhoIsNotDirector(int code)
@@ -89,6 +94,25 @@ namespace Service
             {
                 return 1000;
             }
+        }
+
+        public bool IsEmployeeDirector(Employee employee)
+        {
+            bool ret = false;
+
+            if (employee.FirmStructure != null)
+            {
+                List<Structure> structures = _structureRepository.SelectStructureList();
+                foreach (var structure in structures)
+                {
+                    if (structure.ID== employee.FirmStructure.ID)
+                    {
+                        ret = true;
+                        break;
+                    }
+                }
+            }
+            return ret;
         }
     }
 }

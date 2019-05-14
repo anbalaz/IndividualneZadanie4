@@ -46,6 +46,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.bttnUpdate = new System.Windows.Forms.Button();
             this.chckBxInDepartment = new System.Windows.Forms.CheckBox();
+            this.lblDirector = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtBxTitle
@@ -155,6 +156,7 @@
             this.cmbBxEmployees.Name = "cmbBxEmployees";
             this.cmbBxEmployees.Size = new System.Drawing.Size(216, 21);
             this.cmbBxEmployees.TabIndex = 12;
+            this.cmbBxEmployees.SelectedIndexChanged += new System.EventHandler(this.cmbBxEmployees_SelectedIndexChanged);
             // 
             // lblEmployees
             // 
@@ -204,11 +206,22 @@
             this.chckBxInDepartment.Text = "Not in department";
             this.chckBxInDepartment.UseVisualStyleBackColor = true;
             // 
+            // lblDirector
+            // 
+            this.lblDirector.AutoSize = true;
+            this.lblDirector.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDirector.Location = new System.Drawing.Point(372, 166);
+            this.lblDirector.Name = "lblDirector";
+            this.lblDirector.Size = new System.Drawing.Size(101, 20);
+            this.lblDirector.TabIndex = 19;
+            this.lblDirector.Text = "DIRECTOR";
+            // 
             // ManageEmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(559, 329);
+            this.Controls.Add(this.lblDirector);
             this.Controls.Add(this.chckBxInDepartment);
             this.Controls.Add(this.bttnUpdate);
             this.Controls.Add(this.label6);
@@ -256,5 +269,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button bttnUpdate;
         private System.Windows.Forms.CheckBox chckBxInDepartment;
+        private System.Windows.Forms.Label lblDirector;
     }
 }

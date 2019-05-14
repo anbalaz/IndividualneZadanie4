@@ -1,4 +1,5 @@
 ﻿using Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -147,6 +148,49 @@ namespace Data.Repositories
                     }
                 }
                 return structure;
+            }
+        }
+
+        public bool UpdateStructure(Structure structure)
+        {
+            string sqlQueryUpdateDirector = @"UPDATE Employee SET StructureID = @structureID WHERE ID = @employeeId";
+            string sqlQueryUpdateStructure = @"UPDATE Structure SET Name = @name, EmployeeID = @employeeID WHERE ID = @structureID";
+
+            using (SqlConnection connection = new SqlConnection(Route.CONNECTION_STRING))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlTransaction transaction = connection.BeginTransaction();
+                    SqlCommand command = new SqlCommand();
+                    command.Connection = connection;
+                    command.Transaction = transaction;
+                    command.Parameters.Add("@name", SqlDbType.NVarChar).Value = structure.Name;
+                    command.Parameters.Add("@employeeID", SqlDbType.Int).Value = structure.Employee.ID != 0 ? (object)structure.Employee.ID : DBNull.Value;
+                    command.Parameters.Add("@structureID", SqlDbType.Int).Value = structure.ID;
+                    try
+                    {
+                        command.CommandText = sqlQueryUpdateDirector;
+                        command.ExecuteNonQuery();
+                        command.CommandText = sqlQueryUpdateStructure;
+                        command.ExecuteNonQuery();
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine(e.StackTrace);
+                        Debug.WriteLine(e.Message);
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.StackTrace);
+                    Debug.WriteLine(ex.Message);
+                    return false;
+                }
             }
         }
     }

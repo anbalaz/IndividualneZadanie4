@@ -122,6 +122,7 @@ namespace Data.Repositories
                     command.CommandText = @"SELECT s.EmployeeID,LastName,FirstName,Title,PhoneNumber,EmailAddress,e.StructureID FROM Employee AS e
                                             LEFT JOIN Structure AS s ON s.EmployeeID=e.ID
                                             WHERE s.EmployeeID=@code;";
+
                     command.Parameters.Add("@code", SqlDbType.Int).Value = code;
                     try
                     {

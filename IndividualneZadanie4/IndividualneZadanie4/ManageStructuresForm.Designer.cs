@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button4 = new System.Windows.Forms.Button();
+            this.bttnSave = new System.Windows.Forms.Button();
             this.cmbBxDirector = new System.Windows.Forms.ComboBox();
             this.txtBxStructureName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -40,14 +40,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button4
+            // bttnSave
             // 
-            this.button4.Location = new System.Drawing.Point(514, 200);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 18;
-            this.button4.Text = "Save";
-            this.button4.UseVisualStyleBackColor = true;
+            this.bttnSave.Location = new System.Drawing.Point(514, 200);
+            this.bttnSave.Name = "bttnSave";
+            this.bttnSave.Size = new System.Drawing.Size(75, 23);
+            this.bttnSave.TabIndex = 18;
+            this.bttnSave.Text = "Save";
+            this.bttnSave.UseVisualStyleBackColor = true;
+            this.bttnSave.Click += new System.EventHandler(this.bttnSave_Click);
             // 
             // cmbBxDirector
             // 
@@ -142,7 +143,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.bttnSave);
             this.Controls.Add(this.cmbBxDirector);
             this.Controls.Add(this.txtBxStructureName);
             this.Controls.Add(this.label4);
@@ -157,7 +158,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button bttnSave;
         private System.Windows.Forms.ComboBox cmbBxDirector;
         private System.Windows.Forms.TextBox txtBxStructureName;
         private System.Windows.Forms.Label label4;

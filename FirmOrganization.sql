@@ -55,7 +55,7 @@ VALUES('ZVLDivision',4,2,1),
 INSERT INTO Employee(LastName,FirstName,Title,PhoneNumber,EmailAddress,StructureID) 
 VALUES('Marincin','Marek','Ing.','094568477','smelinar@gmail.com',1),
 		('Bartos','Miroslav','Mgr.','0364646456','hafanana@gmail.com',2),
-		('Marincin','Marek','Bc.','78465331','eeeeeoooo@gmail.com',2),
+		('Mrthin','Marek','Bc.','78465331','eeeeeoooo@gmail.com',2),
 		('Bodnar','Samuel','Ing.','09345646','lalalla@gmail.com',3),
 		('Simon','Dezider','Bc.','3540654','smejd@gmail.com',4),
 		('Simundsen','Ladislav','Ing.','3540654','hajaa@gmail.com',5),
@@ -79,6 +79,10 @@ SELECT ID,LastName,FirstName,Title,PhoneNumber,EmailAddress,StructureID FROM Emp
 
 SELECT s.EmployeeID,LastName,FirstName,Title,PhoneNumber,EmailAddress,e.StructureID FROM Employee AS e
 LEFT JOIN Structure AS s ON s.EmployeeID=e.ID
-WHERE s.EmployeeID=; 
+WHERE s.EmployeeID=2; 
 
 SELECT ID,LastName,FirstName,Title,PhoneNumber,EmailAddress,StructureID FROM Employee
+
+UPDATE Employee SET StructureID = null WHERE ID = 1
+
+Select * FROM Employee

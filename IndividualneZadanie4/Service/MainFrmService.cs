@@ -9,9 +9,9 @@ namespace Service
         private StructureRepository _structureRepository = new StructureRepository();
         private EmployeeRepository _employeeRepository = new EmployeeRepository();
 
-        public List<Structure> GetStructuresList(int code,OrganizationLevel level)
+        public List<Structure> GetStructuresList(int code, OrganizationLevel level)
         {
-            return _structureRepository.SelectStructureList(code,level);
+            return _structureRepository.SelectStructureList(code, level);
         }
 
         public List<Employee> GetEmployeesList(int code)
@@ -37,6 +37,30 @@ namespace Service
         public List<Structure> GetStructuresList()
         {
             return _structureRepository.SelectStructureList();
+        }
+
+        public bool UpdateStructure(Structure structure)
+        {
+            return _structureRepository.UpdateStructure(structure);
+        }
+
+        public List<Employee> GetEveryEmployeeWhoIsNotDirector(int code)
+        {
+            List<Structure> structures = GetStructuresList();
+            List<Employee> employees = GetEmployeesList();
+
+            for (int i = 0; i < employees.Count; i++)
+            {
+                foreach (var structure in structures)
+                {
+                    if (structure.Employee != null && employees[i].ID == structure.Employee.ID && structure.Code != code)
+                    {
+                        employees.Remove(employees[i--]);
+                        break;
+                    }
+                }
+            }
+            return employees;
         }
     }
 }

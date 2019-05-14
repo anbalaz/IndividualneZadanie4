@@ -25,8 +25,7 @@ namespace Data.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Server=DESKTOP-T0A1NJK\\SQLEXPRESS;Database=FirmOrganization;Trusted_Connection=Tr" +
-            "ue")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=TRANSFORMER5\\SQL16;Database=FirmOrganization;Trusted_Connection=True")]
         public string ConnString {
             get {
                 return ((string)(this["ConnString"]));

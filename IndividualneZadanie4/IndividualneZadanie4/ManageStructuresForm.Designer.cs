@@ -34,7 +34,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cmbBxLevel = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bttnLeave = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbBxStructure = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,7 +42,7 @@
             // 
             // bttnSave
             // 
-            this.bttnSave.Location = new System.Drawing.Point(514, 200);
+            this.bttnSave.Location = new System.Drawing.Point(514, 214);
             this.bttnSave.Name = "bttnSave";
             this.bttnSave.Size = new System.Drawing.Size(75, 23);
             this.bttnSave.TabIndex = 18;
@@ -71,9 +71,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(189, 93);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 13);
+            this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 15;
-            this.label4.Text = "CHANGE NAME";
+            this.label4.Text = "NAME";
             // 
             // cmbBxLevel
             // 
@@ -90,19 +90,20 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(406, 93);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(111, 13);
+            this.label6.Size = new System.Drawing.Size(63, 13);
             this.label6.TabIndex = 20;
-            this.label6.Text = "CHANGE DIRECTOR";
+            this.label6.Text = "DIRECTOR";
             // 
-            // button1
+            // bttnLeave
             // 
-            this.button1.Location = new System.Drawing.Point(389, 200);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "Leave";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.bttnLeave.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.bttnLeave.Location = new System.Drawing.Point(514, 157);
+            this.bttnLeave.Name = "bttnLeave";
+            this.bttnLeave.Size = new System.Drawing.Size(75, 23);
+            this.bttnLeave.TabIndex = 23;
+            this.bttnLeave.Text = "Leave";
+            this.bttnLeave.UseVisualStyleBackColor = true;
+            this.bttnLeave.Click += new System.EventHandler(this.bttnLeave_Click);
             // 
             // label1
             // 
@@ -128,9 +129,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 92);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 26;
-            this.label2.Text = "NAME";
+            this.label2.Text = "STRUCTURE";
             // 
             // ManageStructuresForm
             // 
@@ -141,7 +142,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbBxStructure);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bttnLeave);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.bttnSave);
             this.Controls.Add(this.cmbBxDirector);
@@ -164,7 +165,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbBxLevel;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bttnLeave;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbBxStructure;
         private System.Windows.Forms.Label label2;

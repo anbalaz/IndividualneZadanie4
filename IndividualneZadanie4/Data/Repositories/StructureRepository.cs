@@ -151,7 +151,7 @@ namespace Data.Repositories
             }
         }
 
-        public bool UpdateStructure(Structure structure,int previousDirectorId)
+        public bool UpdateStructure(Structure structure, int previousDirectorId)
         {
             string sqlQueryUpdateNewDirector = @"UPDATE Employee SET StructureID = @structureID WHERE ID = @employeeId";
             string sqlQueryUpdatePastDirector = @"UPDATE Employee SET StructureID = null WHERE ID = @previousDirectorId";
@@ -181,6 +181,57 @@ namespace Data.Repositories
                         command.ExecuteNonQuery();
                         command.CommandText = sqlQueryUpdateStructure;
                         command.ExecuteNonQuery();
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine(e.StackTrace);
+                        Debug.WriteLine(e.Message);
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.StackTrace);
+                    Debug.WriteLine(ex.Message);
+                    return false;
+                }
+            }
+        }
+
+        public bool InsertStructure(Structure structure)
+        {
+            string sqlQueryUpdateDirector = @"UPDATE Employee SET StructureID = @structureID WHERE ID = @employeeId";
+            string sqlQueryInsertStructure = @"INSERT INTO Structure(Name, Code, OrganizationLevel, EmployeeID, StructureID) 
+                                               VALUES(@name, @code, @organizationLevel, @employeeId, @firmStructureID)";
+
+            using (SqlConnection connection = new SqlConnection(Route.CONNECTION_STRING))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlTransaction transaction = connection.BeginTransaction();
+                    SqlCommand command = new SqlCommand();
+                    command.Connection = connection;
+                    command.Transaction = transaction;
+                    command.Parameters.Add("@name", SqlDbType.NVarChar).Value = structure.Name;
+                    command.Parameters.Add("@code", SqlDbType.Int).Value = structure.ID;
+                    command.Parameters.Add("@organizationLevel", SqlDbType.Int).Value = (int)structure.Level;
+                    command.Parameters.Add("@employeeID", SqlDbType.Int).Value = structure.Employee.ID != 0 ? (object)structure.Employee.ID : DBNull.Value;
+                    command.Parameters.Add("@firmStructureID", SqlDbType.Int).Value = structure.FirmStructure != null ? (object)structure.FirmStructure.ID : DBNull.Value;
+                    command.Parameters.Add("@structureID", SqlDbType.Int).Value = structure.ID;
+
+                    try
+                    {
+                        command.CommandText = sqlQueryInsertStructure;
+                        command.ExecuteNonQuery();
+                        if (structure.Employee.ID != 0)
+                        {
+                            command.CommandText = sqlQueryUpdateDirector;
+                            command.ExecuteNonQuery();
+                        }
                         transaction.Commit();
                         return true;
                     }

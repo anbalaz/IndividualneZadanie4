@@ -1,6 +1,7 @@
 ﻿using Data.Models;
 using Data.Repositories;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Service
 {
@@ -44,6 +45,11 @@ namespace Service
             return _structureRepository.UpdateStructure(structure, previousDirectorId);
         }
 
+        public bool InsertStructure(Structure structure)
+        {
+            return _structureRepository.InsertStructure(structure);
+        }
+
         public List<Employee> GetEveryEmployeeWhoIsNotDirector(int code)
         {
             List<Structure> structures = GetStructuresList();
@@ -61,6 +67,18 @@ namespace Service
                 }
             }
             return employees;
+        }
+
+        public int GenerateCode()
+        {
+            if (GetStructuresList().Count != 0)
+            {
+                return GetStructuresList().Max(structure => structure.Code) + 1;
+            }
+            else
+            {
+                return 1000;
+            }
         }
     }
 }

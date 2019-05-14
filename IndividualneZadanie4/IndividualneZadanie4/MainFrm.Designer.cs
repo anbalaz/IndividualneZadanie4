@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.bttnNewFirm = new System.Windows.Forms.Button();
-            this.cmbBxFirms = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.dtGrdVwFirm = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -60,24 +58,6 @@
             this.bttnNewFirm.Text = "New firm";
             this.bttnNewFirm.UseVisualStyleBackColor = true;
             this.bttnNewFirm.Click += new System.EventHandler(this.bttnNewFirm_Click);
-            // 
-            // cmbBxFirms
-            // 
-            this.cmbBxFirms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbBxFirms.FormattingEnabled = true;
-            this.cmbBxFirms.Location = new System.Drawing.Point(933, 581);
-            this.cmbBxFirms.Name = "cmbBxFirms";
-            this.cmbBxFirms.Size = new System.Drawing.Size(121, 21);
-            this.cmbBxFirms.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(957, 618);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Select firm :";
             // 
             // dtGrdVwFirm
             // 
@@ -254,8 +234,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dtGrdVwFirm);
             this.Controls.Add(this.bttnManageEmployees);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.cmbBxFirms);
             this.Controls.Add(this.bttnNewFirm);
             this.Controls.Add(this.bttnManageStructures);
             this.Name = "MainFrm";
@@ -272,8 +250,6 @@
 
         #endregion
         private System.Windows.Forms.Button bttnNewFirm;
-        private System.Windows.Forms.ComboBox cmbBxFirms;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dtGrdVwFirm;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

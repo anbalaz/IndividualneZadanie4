@@ -20,7 +20,9 @@ namespace IndividualneZadanie4
         {
             using (ManageStructuresForm newFrm = new ManageStructuresForm())
             {
-                newFrm.ShowDialog();
+                if (newFrm.ShowDialog() == DialogResult.OK)
+                {
+                }
             }
         }
 
@@ -56,8 +58,6 @@ namespace IndividualneZadanie4
             dtGrdVwEmployee.Columns.Add("Title", "Title");
             dtGrdVwEmployee.Columns.Add("PhoneNumber", "PhoneNumber");
             dtGrdVwEmployee.Columns.Add("EmailAddress", "EmailAddress");
-            //dtGrdVwFirm.Columns["UserID"].Visible = false;
-            cmbBxFirms.DisplayMember = nameof(Structure.Name);
         }
         #region Refresh Datagrids
         private void RefreshDatagridFirm(List<Structure> structures)

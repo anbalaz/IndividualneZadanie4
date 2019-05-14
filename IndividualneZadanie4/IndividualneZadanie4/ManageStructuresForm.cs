@@ -12,16 +12,44 @@ namespace IndividualneZadanie4
         private MainFrmService _mainFrmService = new MainFrmService();
         private Structure _structure;
         private int _previousDirectorId;
+
         public ManageStructuresForm()
         {
             InitializeComponent();
-            _mainFrmService.GetEveryEmployeeWhoIsNotDirector(5);
-            InitializeFields();
+            InitializeFields(); 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void bttnSave_Click(object sender, EventArgs e)
+        {
+            _structure.Employee = (Employee)cmbBxDirector.SelectedItem;
+            _structure.Name = txtBxStructureName.Text;
+            string message = "Data were not updated";
+            if (!string.IsNullOrWhiteSpace(txtBxStructureName.Text) && !string.IsNullOrEmpty(txtBxStructureName.Text))
+            {
+                if (_mainFrmService.UpdateStructure(_structure, _previousDirectorId) == true)
+                {
+                    message = "Data were updated";
+                }
+            }
+            RefreshStructure();
+            RefreshDirectorAndStructureBoxes();
+            MessageBox.Show(message);
+        }
+
+        private void bttnLeave_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void cmbBxLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshStructure();
+            RefreshDirectorAndStructureBoxes();
+        }
+
+        private void cmbBxStructure_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshDirectorAndStructureBoxes();
         }
 
         private void InitializeFields()
@@ -55,34 +83,5 @@ namespace IndividualneZadanie4
             cmbBxStructure.DisplayMember = nameof(Structure.Name);
         }
 
-        private void cmbBxLevel_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            RefreshStructure();
-            RefreshDirectorAndStructureBoxes();
-        }
-
-        private void cmbBxStructure_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            RefreshDirectorAndStructureBoxes();
-        }
-
-
-
-        private void bttnSave_Click(object sender, EventArgs e)
-        {
-            _structure.Employee = (Employee)cmbBxDirector.SelectedItem;
-            _structure.Name = txtBxStructureName.Text;
-            string message = "Data were not updated";
-            if (!string.IsNullOrWhiteSpace(txtBxStructureName.Text) && !string.IsNullOrEmpty(txtBxStructureName.Text))
-            {
-                if (_mainFrmService.UpdateStructure(_structure,_previousDirectorId) == true)
-                {
-                    message = "Data were updated";
-                }
-            }
-            RefreshStructure();
-            RefreshDirectorAndStructureBoxes();
-            MessageBox.Show(message);
-        }
     }
 }

@@ -86,3 +86,4 @@ SELECT ID,LastName,FirstName,Title,PhoneNumber,EmailAddress,StructureID FROM Emp
 UPDATE Employee SET StructureID = null WHERE ID = 1
 
 Select * FROM Employee
+

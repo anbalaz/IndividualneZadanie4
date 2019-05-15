@@ -9,10 +9,18 @@ namespace Service
     {
         private StructureRepository _structureRepository = MainRepository.StructureRepository;
         private EmployeeRepository _employeeRepository = MainRepository.EmployeeRepository;
+        private TestConnectionRepository _testConnectionRepository = MainRepository.TestConnectionRepository;
 
-        public List<Structure> GetStructuresList(int code, OrganizationLevel level)
+        #region Employee repository
+
+        public bool IsEmployeeInserted(Employee employee)
         {
-            return _structureRepository.SelectStructureList(code, level);
+            return _employeeRepository.InsertEmployee(employee);
+        }
+
+        public bool IsEmployeeUpdated(Employee employee)
+        {
+            return _employeeRepository.UpdateEmployee(employee);
         }
 
         public List<Employee> GetEmployeesList(int code)
@@ -30,6 +38,10 @@ namespace Service
             return _employeeRepository.SelectEmployee(code);
         }
 
+        #endregion
+
+        #region Structure repository
+
         public Structure GetStructure(int code)
         {
             return _structureRepository.SelectStructure(code);
@@ -45,24 +57,26 @@ namespace Service
             return _structureRepository.SelectStructureList().Where(structure => structure.Level == level).ToList();
         }
 
-        public bool UpdateStructure(Structure structure, int previousDirectorId)
+        public List<Structure> GetStructuresList(int code, OrganizationLevel level)
+        {
+            return _structureRepository.SelectStructureList(code, level);
+        }
+
+        public bool IsStructureUpdated(Structure structure, int previousDirectorId)
         {
             return _structureRepository.UpdateStructure(structure, previousDirectorId);
         }
 
-        public bool InsertStructure(Structure structure)
+        public bool IsStructureInserted(Structure structure)
         {
             return _structureRepository.InsertStructure(structure);
         }
 
-        public bool InsertEmployee(Employee employee)
-        {
-            return _employeeRepository.InsertEmployee(employee);
-        }
+        #endregion
 
-        public bool UpdateEmployee(Employee employee)
+        public bool IsSqlConnectionOk()
         {
-            return _employeeRepository.UpdateEmployee(employee);
+            return _testConnectionRepository.IsSqlConnectionOk();
         }
 
         public List<Employee> GetEveryEmployeeWhoIsNotDirector(int code)

@@ -69,7 +69,7 @@ namespace IndividualneZadanie4
             if (!string.IsNullOrEmpty(txtBxFirstName.Text) && !string.IsNullOrEmpty(txtBxLastName.Text))
             {
                 Employee employee = CreateEmployee();
-                if (_mainFrmService.InsertEmployee(employee))
+                if (_mainFrmService.IsEmployeeInserted(employee))
                 {
                     message = "Employee was added";
                     RefreshButtonsAfterAdding();
@@ -84,7 +84,7 @@ namespace IndividualneZadanie4
             if (!string.IsNullOrEmpty(txtBxFirstName.Text) && !string.IsNullOrEmpty(txtBxLastName.Text))
             {
                 UpdateEmployee();
-                if (_mainFrmService.UpdateEmployee(_employee))
+                if (_mainFrmService.IsEmployeeUpdated(_employee))
                 {
                     message = "Employee was updated";
                     RefreshConrollsUpdate();

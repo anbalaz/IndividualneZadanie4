@@ -97,7 +97,7 @@
             // bttnLeave
             // 
             this.bttnLeave.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.bttnLeave.Location = new System.Drawing.Point(514, 157);
+            this.bttnLeave.Location = new System.Drawing.Point(409, 214);
             this.bttnLeave.Name = "bttnLeave";
             this.bttnLeave.Size = new System.Drawing.Size(75, 23);
             this.bttnLeave.TabIndex = 23;

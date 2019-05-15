@@ -24,7 +24,7 @@ namespace IndividualneZadanie4
             if (!string.IsNullOrWhiteSpace(txtBxStructureName.Text) && !string.IsNullOrEmpty(txtBxStructureName.Text))
             {
                 Structure structure = GetStructure();
-                if (_mainFrmService.InsertStructure(structure) == true)
+                if (_mainFrmService.IsStructureInserted(structure) == true)
                 {
                     message = "Data were inserted";
                 }

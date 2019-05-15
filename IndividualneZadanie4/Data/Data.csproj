@@ -59,6 +59,7 @@
     <Compile Include="Repositories\MainRepository.cs" />
     <Compile Include="Repositories\StructureRepository.cs" />
     <Compile Include="Repositories\Route.cs" />
+    <Compile Include="Repositories\TestConnectionRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

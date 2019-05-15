@@ -221,6 +221,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(559, 329);
+            this.ControlBox = false;
             this.Controls.Add(this.lblDirector);
             this.Controls.Add(this.chckBxInDepartment);
             this.Controls.Add(this.bttnUpdate);

@@ -253,6 +253,7 @@
             this.Controls.Add(this.bttnManageEmployees);
             this.Controls.Add(this.bttnNewFirm);
             this.Controls.Add(this.bttnManageStructures);
+            this.MinimumSize = new System.Drawing.Size(1417, 679);
             this.Name = "MainFrm";
             this.Text = "Main";
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwFirm)).EndInit();

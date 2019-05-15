@@ -12,8 +12,7 @@ namespace IndividualneZadanie4
         public MainFrm()
         {
             InitializeComponent();
-            InitializeDataGrids();
-            RefreshDatagridFirm(_mainFrmService.GetStructuresList(0, OrganizationLevel.Firm));
+            InitializeControllers();
         }
 
         private void bttnManageStructures_Click(object sender, EventArgs e)
@@ -47,6 +46,25 @@ namespace IndividualneZadanie4
             using (ManageEmployeesForm newFrm = new ManageEmployeesForm(0))
             {
                 newFrm.ShowDialog();
+            }
+        }
+
+        private void MainFrm_CloseOnStart(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void InitializeControllers()
+        {
+            if (_mainFrmService.IsSqlConnectionOk())
+            {
+                InitializeDataGrids();
+                RefreshDatagridFirm(_mainFrmService.GetStructuresList(0, OrganizationLevel.Firm));
+            }
+            else
+            {
+                MessageBox.Show("There is a problem with your connection to db, please check your settings and try again later");
+                Load += MainFrm_CloseOnStart;
             }
         }
 
@@ -114,6 +132,8 @@ namespace IndividualneZadanie4
         }
         #endregion
 
+        #region Cell Click
+
         private void dtGrdVwFirm_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int code = (int)dtGrdVwFirm.CurrentRow.Cells["Code"].Value;
@@ -138,6 +158,6 @@ namespace IndividualneZadanie4
             RefreshDatagridEmployee(_mainFrmService.GetEmployeesList(code));
         }
 
-
+        #endregion
     }
 }

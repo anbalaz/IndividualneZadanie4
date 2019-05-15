@@ -203,7 +203,7 @@ namespace Data.Repositories
 
         public bool InsertStructure(Structure structure)
         {
-            string sqlQueryUpdateDirector = @"UPDATE Employee SET StructureID = @structureID WHERE ID = @employeeId";
+            string sqlQueryUpdateDirector = @"UPDATE Employee SET StructureID = @structureID WHERE ID = @employeeID";
             string sqlQueryInsertStructure = @"INSERT INTO Structure(Name, Code, OrganizationLevel, EmployeeID, StructureID) 
                                                VALUES(@name, @code, @organizationLevel, @employeeId, @firmStructureID)";
 

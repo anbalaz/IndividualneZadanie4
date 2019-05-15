@@ -80,7 +80,7 @@
             // bttnLeave
             // 
             this.bttnLeave.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.bttnLeave.Location = new System.Drawing.Point(513, 155);
+            this.bttnLeave.Location = new System.Drawing.Point(408, 214);
             this.bttnLeave.Name = "bttnLeave";
             this.bttnLeave.Size = new System.Drawing.Size(75, 23);
             this.bttnLeave.TabIndex = 34;
@@ -131,7 +131,7 @@
             this.cmbBxLevel.TabIndex = 28;
             this.cmbBxLevel.SelectedIndexChanged += new System.EventHandler(this.cmbBxLevel_SelectedIndexChanged_1);
             // 
-            // NewFirmForm
+            // AddStructureFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -148,7 +148,7 @@
             this.Controls.Add(this.cmbBxLevel);
             this.MaximumSize = new System.Drawing.Size(642, 288);
             this.MinimumSize = new System.Drawing.Size(642, 288);
-            this.Name = "NewFirmForm";
+            this.Name = "AddStructureFrm";
             this.Text = "NewFirm";
             this.ResumeLayout(false);
             this.PerformLayout();

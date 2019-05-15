@@ -16,17 +16,17 @@ namespace IndividualneZadanie4
         public ManageStructuresForm()
         {
             InitializeComponent();
-            InitializeFields(); 
+            InitializeFields();
         }
 
         private void bttnSave_Click(object sender, EventArgs e)
         {
-            _structure.Employee = (Employee)cmbBxDirector.SelectedItem;
+            _structure.Employee = cmbBxDirector.SelectedItem==null?null: (Employee)cmbBxDirector.SelectedItem;
             _structure.Name = txtBxStructureName.Text;
             string message = "Data were not updated";
             if (!string.IsNullOrWhiteSpace(txtBxStructureName.Text) && !string.IsNullOrEmpty(txtBxStructureName.Text))
             {
-                if (_mainFrmService.UpdateStructure(_structure, _previousDirectorId) == true)
+                if (_mainFrmService.IsStructureUpdated(_structure, _previousDirectorId) == true)
                 {
                     message = "Data were updated";
                 }
@@ -62,17 +62,18 @@ namespace IndividualneZadanie4
         private void RefreshDirectorAndStructureBoxes()
         {
             _structure = (Structure)cmbBxStructure.SelectedValue;
-            if (_structure.Employee != null)
-                _previousDirectorId = _structure.Employee.ID;
-
-            List<Employee> employees = _mainFrmService.GetEveryEmployeeWhoIsNotDirector(_structure.Code);
             if (_structure != null)
             {
+                List<Employee> employees = _mainFrmService.GetEveryEmployeeWhoIsNotDirector(_structure.Code);
                 txtBxStructureName.Text = _structure.Name;
                 cmbBxDirector.DataSource = employees;
                 cmbBxDirector.DisplayMember = nameof(Employee.FullName);
                 if (_structure.Employee != null)
+                {
                     cmbBxDirector.Text = _mainFrmService.GetEmployee(_structure.Employee.ID).FullName;
+                    _previousDirectorId = _structure.Employee.ID;
+
+                }
             }
         }
 

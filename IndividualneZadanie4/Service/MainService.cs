@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Service
 {
-    public class MainFrmService
+    public class MainService
     {
         private StructureRepository _structureRepository = MainRepository.StructureRepository;
         private EmployeeRepository _employeeRepository = MainRepository.EmployeeRepository;
@@ -100,13 +100,14 @@ namespace Service
 
         public int GenerateCode()
         {
-            if (GetStructuresList().Count != 0)
+            int dafaultCode = 1000;
+            if (GetStructuresList().Any())
             {
                 return GetStructuresList().Max(structure => structure.Code) + 1;
             }
             else
             {
-                return 1000;
+                return dafaultCode;
             }
         }
 

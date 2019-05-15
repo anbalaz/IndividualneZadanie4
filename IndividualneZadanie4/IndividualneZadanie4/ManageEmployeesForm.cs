@@ -8,7 +8,7 @@ namespace IndividualneZadanie4
 {
     public partial class ManageEmployeesForm : Form
     {
-        private MainFrmService _mainFrmService = new MainFrmService();
+        private MainService _mainFrmService = new MainService();
         private Employee _employee;
 
         public ManageEmployeesForm()

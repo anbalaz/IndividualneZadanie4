@@ -9,7 +9,7 @@ namespace IndividualneZadanie4
 {
     public partial class ManageStructuresForm : Form
     {
-        private MainFrmService _mainFrmService = new MainFrmService();
+        private MainService _mainFrmService = new MainService();
         private Structure _structure;
         private int _previousDirectorId;
 

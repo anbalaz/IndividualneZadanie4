@@ -10,7 +10,7 @@ namespace IndividualneZadanie4
 {
     public partial class AddStructureFrm : Form
     {
-        private MainFrmService _mainFrmService = new MainFrmService();
+        private MainService _mainFrmService = new MainService();
 
         public AddStructureFrm()
         {

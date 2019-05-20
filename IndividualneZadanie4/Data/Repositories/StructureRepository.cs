@@ -22,6 +22,7 @@ namespace Data.Repositories
                 catch (SqlException e)
                 {
                     Debug.WriteLine(e.Message);
+                    return structures;
                 }
                 using (SqlCommand command = connection.CreateCommand())
                 {
@@ -74,6 +75,7 @@ namespace Data.Repositories
                 catch (SqlException e)
                 {
                     Debug.WriteLine(e.Message);
+                    return structures;
                 }
                 using (SqlCommand command = connection.CreateCommand())
                 {
@@ -119,6 +121,7 @@ namespace Data.Repositories
                 catch (SqlException e)
                 {
                     Debug.WriteLine(e.Message);
+                    return structure;
                 }
                 using (SqlCommand command = connection.CreateCommand())
                 {
@@ -162,34 +165,36 @@ namespace Data.Repositories
                 try
                 {
                     connection.Open();
-                    SqlTransaction transaction = connection.BeginTransaction();
-                    SqlCommand command = new SqlCommand();
-                    command.Connection = connection;
-                    command.Transaction = transaction;
-                    command.Parameters.Add("@name", SqlDbType.NVarChar).Value = structure.Name;
-                    command.Parameters.Add("@employeeID", SqlDbType.Int).Value = structure.Employee.ID != 0 ? (object)structure.Employee.ID : DBNull.Value;
-                    command.Parameters.Add("@structureID", SqlDbType.Int).Value = structure.ID;
-                    command.Parameters.Add("@previousDirectorId", SqlDbType.Int).Value = previousDirectorId;
-                    try
+                    using (SqlTransaction transaction = connection.BeginTransaction())
+                    using (SqlCommand command = new SqlCommand())
                     {
-                        if (previousDirectorId != 0)
+                        command.Connection = connection;
+                        command.Transaction = transaction;
+                        command.Parameters.Add("@name", SqlDbType.NVarChar).Value = structure.Name;
+                        command.Parameters.Add("@employeeID", SqlDbType.Int).Value = structure.Employee.ID != 0 ? (object)structure.Employee.ID : DBNull.Value;
+                        command.Parameters.Add("@structureID", SqlDbType.Int).Value = structure.ID;
+                        command.Parameters.Add("@previousDirectorId", SqlDbType.Int).Value = previousDirectorId;
+                        try
                         {
-                            command.CommandText = sqlQueryUpdatePastDirector;
+                            if (previousDirectorId != 0)
+                            {
+                                command.CommandText = sqlQueryUpdatePastDirector;
+                                command.ExecuteNonQuery();
+                            }
+                            command.CommandText = sqlQueryUpdateNewDirector;
                             command.ExecuteNonQuery();
+                            command.CommandText = sqlQueryUpdateStructure;
+                            command.ExecuteNonQuery();
+                            transaction.Commit();
+                            return true;
                         }
-                        command.CommandText = sqlQueryUpdateNewDirector;
-                        command.ExecuteNonQuery();
-                        command.CommandText = sqlQueryUpdateStructure;
-                        command.ExecuteNonQuery();
-                        transaction.Commit();
-                        return true;
-                    }
-                    catch (Exception e)
-                    {
-                        Debug.WriteLine(e.StackTrace);
-                        Debug.WriteLine(e.Message);
-                        transaction.Rollback();
-                        return false;
+                        catch (Exception e)
+                        {
+                            Debug.WriteLine(e.StackTrace);
+                            Debug.WriteLine(e.Message);
+                            transaction.Rollback();
+                            return false;
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -212,35 +217,37 @@ namespace Data.Repositories
                 try
                 {
                     connection.Open();
-                    SqlTransaction transaction = connection.BeginTransaction();
-                    SqlCommand command = new SqlCommand();
-                    command.Connection = connection;
-                    command.Transaction = transaction;
-                    command.Parameters.Add("@name", SqlDbType.NVarChar).Value = structure.Name;
-                    command.Parameters.Add("@code", SqlDbType.Int).Value = structure.ID;
-                    command.Parameters.Add("@organizationLevel", SqlDbType.Int).Value = (int)structure.Level;
-                    command.Parameters.Add("@employeeID", SqlDbType.Int).Value = structure.Employee.ID != 0 ? (object)structure.Employee.ID : DBNull.Value;
-                    command.Parameters.Add("@firmStructureID", SqlDbType.Int).Value = structure.FirmStructure != null ? (object)structure.FirmStructure.ID : DBNull.Value;
-                    command.Parameters.Add("@structureID", SqlDbType.Int).Value = structure.ID;
+                    using (SqlTransaction transaction = connection.BeginTransaction())
+                    using (SqlCommand command = new SqlCommand())
+                    {
+                        command.Connection = connection;
+                        command.Transaction = transaction;
+                        command.Parameters.Add("@name", SqlDbType.NVarChar).Value = structure.Name;
+                        command.Parameters.Add("@code", SqlDbType.Int).Value = structure.ID;
+                        command.Parameters.Add("@organizationLevel", SqlDbType.Int).Value = (int)structure.Level;
+                        command.Parameters.Add("@employeeID", SqlDbType.Int).Value = structure.Employee.ID != 0 ? (object)structure.Employee.ID : DBNull.Value;
+                        command.Parameters.Add("@firmStructureID", SqlDbType.Int).Value = structure.FirmStructure != null ? (object)structure.FirmStructure.ID : DBNull.Value;
+                        command.Parameters.Add("@structureID", SqlDbType.Int).Value = structure.ID;
 
-                    try
-                    {
-                        command.CommandText = sqlQueryInsertStructure;
-                        command.ExecuteNonQuery();
-                        if (structure.Employee.ID != 0)
+                        try
                         {
-                            command.CommandText = sqlQueryUpdateDirector;
+                            command.CommandText = sqlQueryInsertStructure;
                             command.ExecuteNonQuery();
+                            if (structure.Employee.ID != 0)
+                            {
+                                command.CommandText = sqlQueryUpdateDirector;
+                                command.ExecuteNonQuery();
+                            }
+                            transaction.Commit();
+                            return true;
                         }
-                        transaction.Commit();
-                        return true;
-                    }
-                    catch (Exception e)
-                    {
-                        Debug.WriteLine(e.StackTrace);
-                        Debug.WriteLine(e.Message);
-                        transaction.Rollback();
-                        return false;
+                        catch (Exception e)
+                        {
+                            Debug.WriteLine(e.StackTrace);
+                            Debug.WriteLine(e.Message);
+                            transaction.Rollback();
+                            return false;
+                        }
                     }
                 }
                 catch (Exception ex)

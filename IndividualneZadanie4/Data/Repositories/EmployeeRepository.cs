@@ -21,6 +21,7 @@ namespace Data.Repositories
                 catch (SqlException e)
                 {
                     Debug.WriteLine(e.Message);
+                    return employees;
                 }
                 using (SqlCommand command = connection.CreateCommand())
                 {
@@ -68,6 +69,7 @@ namespace Data.Repositories
                 catch (SqlException e)
                 {
                     Debug.WriteLine(e.Message);
+                    return employees;
                 }
                 using (SqlCommand command = connection.CreateCommand())
                 {
@@ -113,6 +115,7 @@ namespace Data.Repositories
                 catch (SqlException e)
                 {
                     Debug.WriteLine(e.Message);
+                    return employee;
                 }
                 using (SqlCommand command = connection.CreateCommand())
                 {
@@ -126,7 +129,7 @@ namespace Data.Repositories
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             {
-                                while (reader.Read())
+                                if (reader.Read())
                                 {
                                     employee.ID = reader.GetInt32(0);
                                     employee.LastName = reader.GetString(1);
